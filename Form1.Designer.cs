@@ -37,20 +37,20 @@
             this.lblRating = new System.Windows.Forms.Label();
             this.txtbxProducer = new System.Windows.Forms.TextBox();
             this.lblProducer = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtbxWriter = new System.Windows.Forms.TextBox();
             this.lblWriter = new System.Windows.Forms.Label();
             this.txtbxDirector = new System.Windows.Forms.TextBox();
             this.lblDirector = new System.Windows.Forms.Label();
             this.dgvMovieList = new System.Windows.Forms.DataGridView();
             this.cmbxGenre = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbxRating = new System.Windows.Forms.ComboBox();
             this.btnAddMovie = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtbxReleaseYr = new System.Windows.Forms.TextBox();
             this.txtbxTitle = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtbxMovieID = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtbxSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
@@ -139,14 +139,14 @@
             this.lblProducer.TabIndex = 11;
             this.lblProducer.Text = "Producer";
             // 
-            // textBox5
+            // txtbxWriter
             // 
-            this.textBox5.BackColor = System.Drawing.Color.LightGray;
-            this.textBox5.Font = new System.Drawing.Font("Mongolian Baiti", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(664, 239);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(306, 29);
-            this.textBox5.TabIndex = 14;
+            this.txtbxWriter.BackColor = System.Drawing.Color.LightGray;
+            this.txtbxWriter.Font = new System.Drawing.Font("Mongolian Baiti", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbxWriter.Location = new System.Drawing.Point(664, 239);
+            this.txtbxWriter.Name = "txtbxWriter";
+            this.txtbxWriter.Size = new System.Drawing.Size(306, 29);
+            this.txtbxWriter.TabIndex = 14;
             // 
             // lblWriter
             // 
@@ -185,26 +185,58 @@
             this.dgvMovieList.Name = "dgvMovieList";
             this.dgvMovieList.Size = new System.Drawing.Size(908, 210);
             this.dgvMovieList.TabIndex = 23;
+            this.dgvMovieList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMovieList_RowHeaderMouseClick);
             // 
             // cmbxGenre
             // 
             this.cmbxGenre.BackColor = System.Drawing.Color.LightGray;
             this.cmbxGenre.Font = new System.Drawing.Font("Mongolian Baiti", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbxGenre.FormattingEnabled = true;
+            this.cmbxGenre.Items.AddRange(new object[] {
+            "Action",
+            "Adventure",
+            "Biographical",
+            "Christian",
+            "Comedy",
+            "Crime",
+            "Drama",
+            "Documentary",
+            "Fantasy",
+            "Historical",
+            "Historical Fiction",
+            "Horror",
+            "Magical Realism",
+            "Musical",
+            "Mystery",
+            "Political",
+            "Religious",
+            "Romance",
+            "Science Fiction",
+            "Sports",
+            "Thriller",
+            "Urban",
+            "Western"});
             this.cmbxGenre.Location = new System.Drawing.Point(165, 288);
             this.cmbxGenre.Name = "cmbxGenre";
             this.cmbxGenre.Size = new System.Drawing.Size(306, 28);
             this.cmbxGenre.TabIndex = 8;
             // 
-            // comboBox1
+            // cmbxRating
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.LightGray;
-            this.comboBox1.Font = new System.Drawing.Font("Mongolian Baiti", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(664, 288);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(306, 28);
-            this.comboBox1.TabIndex = 16;
+            this.cmbxRating.BackColor = System.Drawing.Color.LightGray;
+            this.cmbxRating.Font = new System.Drawing.Font("Mongolian Baiti", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbxRating.FormattingEnabled = true;
+            this.cmbxRating.Items.AddRange(new object[] {
+            "G",
+            "PG",
+            "PG-13",
+            "R",
+            "NC-17",
+            "N/A"});
+            this.cmbxRating.Location = new System.Drawing.Point(664, 288);
+            this.cmbxRating.Name = "cmbxRating";
+            this.cmbxRating.Size = new System.Drawing.Size(306, 28);
+            this.cmbxRating.TabIndex = 16;
             // 
             // btnAddMovie
             // 
@@ -218,6 +250,7 @@
             this.btnAddMovie.TabIndex = 17;
             this.btnAddMovie.Text = "Add";
             this.btnAddMovie.UseVisualStyleBackColor = false;
+            this.btnAddMovie.Click += new System.EventHandler(this.btnAddMovie_Click);
             // 
             // btnUpdate
             // 
@@ -231,6 +264,7 @@
             this.btnUpdate.TabIndex = 18;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -244,6 +278,7 @@
             this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClear
             // 
@@ -257,6 +292,7 @@
             this.btnClear.TabIndex = 20;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtbxReleaseYr
             // 
@@ -276,14 +312,15 @@
             this.txtbxTitle.Size = new System.Drawing.Size(306, 29);
             this.txtbxTitle.TabIndex = 4;
             // 
-            // textBox1
+            // txtbxMovieID
             // 
-            this.textBox1.BackColor = System.Drawing.Color.LightGray;
-            this.textBox1.Font = new System.Drawing.Font("Mongolian Baiti", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(165, 146);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(306, 29);
-            this.textBox1.TabIndex = 2;
+            this.txtbxMovieID.BackColor = System.Drawing.Color.LightGray;
+            this.txtbxMovieID.Font = new System.Drawing.Font("Mongolian Baiti", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbxMovieID.Location = new System.Drawing.Point(165, 146);
+            this.txtbxMovieID.Name = "txtbxMovieID";
+            this.txtbxMovieID.ReadOnly = true;
+            this.txtbxMovieID.Size = new System.Drawing.Size(306, 29);
+            this.txtbxMovieID.TabIndex = 2;
             // 
             // pictureBox2
             // 
@@ -294,6 +331,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 33;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // txtbxSearch
             // 
@@ -325,18 +363,18 @@
             this.Controls.Add(this.txtbxSearch);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtbxMovieID);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAddMovie);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbxRating);
             this.Controls.Add(this.cmbxGenre);
             this.Controls.Add(this.dgvMovieList);
             this.Controls.Add(this.lblRating);
             this.Controls.Add(this.txtbxProducer);
             this.Controls.Add(this.lblProducer);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtbxWriter);
             this.Controls.Add(this.lblWriter);
             this.Controls.Add(this.txtbxDirector);
             this.Controls.Add(this.lblDirector);
@@ -350,6 +388,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovieList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -368,20 +407,20 @@
         private System.Windows.Forms.Label lblRating;
         private System.Windows.Forms.TextBox txtbxProducer;
         private System.Windows.Forms.Label lblProducer;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtbxWriter;
         private System.Windows.Forms.Label lblWriter;
         private System.Windows.Forms.TextBox txtbxDirector;
         private System.Windows.Forms.Label lblDirector;
         private System.Windows.Forms.DataGridView dgvMovieList;
         private System.Windows.Forms.ComboBox cmbxGenre;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbxRating;
         private System.Windows.Forms.Button btnAddMovie;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox txtbxReleaseYr;
         private System.Windows.Forms.TextBox txtbxTitle;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtbxMovieID;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtbxSearch;
         private System.Windows.Forms.Label lblSearch;

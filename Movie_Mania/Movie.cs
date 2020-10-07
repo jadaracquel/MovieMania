@@ -21,7 +21,8 @@ namespace MovieMania.Movie_Mania
         public string Rating { get; set; }
 
         //Connect the name of the connection string in App.config file
-        //static string connStr = DBUtils.GetConnStr("DBConnStr");
+        static string connStr = ConfigurationManager.ConnectionStrings["DBConnStr"].ConnectionString;
+
         public bool RowsAffected(SqlCommand cmd)
         {
             bool isAffected = false;
@@ -41,7 +42,7 @@ namespace MovieMania.Movie_Mania
         {
             DataTable DT = new DataTable();
             //Step 1: Create SQL connection
-            using (SqlConnection conn = DBUtils.GetSqlConnection("DBConnStr")) //OR using(SqlConnection conn = new SqlConnection(connStr));see line 24
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
                 //Step 2: Write SQL query command
                 string sql = "SELECT * FROM Movies";
@@ -62,7 +63,7 @@ namespace MovieMania.Movie_Mania
         {
             bool isAdded = false;
             //Step 1: Create SQL Connection
-            using (SqlConnection conn = DBUtils.GetSqlConnection("DBConnStr"))
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
                 //Step 2: Write SQL query command w/ parameters (ALWAYS add parameters when writing an "INSERT INTO" command)
                 //Parameters= basically variables that begin with @
@@ -90,7 +91,7 @@ namespace MovieMania.Movie_Mania
         {
             bool isUpdated = false;
             //Step 1: Establish SQL Connection
-            using (SqlConnection conn = DBUtils.GetSqlConnection("DBConnStr"))
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
                 //Step 2: Write SQL query command w/ parameters (ALWAYS add parameters when writing an "UPDATE" command)
                 //Parameters= basically variables that begin with @
@@ -117,7 +118,7 @@ namespace MovieMania.Movie_Mania
         {
             bool isDeleted = false;
             //Step 1: Establish SQL Connection
-            using (SqlConnection conn = DBUtils.GetSqlConnection("DBConnStr"))
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
                 //Step 2: Write SQL query command
                 string sql = "DELETE FROM Movies WHERE MovieID = @MovieID";
@@ -136,7 +137,7 @@ namespace MovieMania.Movie_Mania
         {
             DataTable DT = new DataTable();
             //Step 1: Establish SQL Connection
-            using (SqlConnection conn = DBUtils.GetSqlConnection("DBConnStr"))
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
                 //Step 2: Write sql query command
                 string sql = "SELECT * FROM Movies WHERE Title LIKE '%" + keyword + "%' OR ReleaseYear LIKE '%" + keyword +
